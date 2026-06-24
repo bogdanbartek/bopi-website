@@ -1,16 +1,10 @@
 import crypto from 'node:crypto';
+import { signToken } from '../lib/shared.mjs';
 
 const SECRET = process.env.ADMIN_SECRET || '';
 const PASSWORD = process.env.ADMIN_PASSWORD || '';
 
-// Tworzy podpisany token (HMAC) ważny przez 8 godzin.
-function sign(payload) {
-  const body = Buffer.from(JSON.stringify(payload)).toString('base64url');
-  const sig = crypto.createHmac('sha256', SECRET).update(body).digest('base64url');
-  return `${body}.${sig}`;
-}
-
-// Logowanie pracownika hasłem → zwraca token sesji.
+// Logowanie pracownika hasłem → zwraca token sesji (ważny 8 godzin).
 export default async (req) => {
   if (req.method !== 'POST') return new Response('Method not allowed', { status: 405 });
   if (!SECRET || !PASSWORD) {
@@ -25,6 +19,5 @@ export default async (req) => {
   const ok = a.length === b.length && crypto.timingSafeEqual(a, b);
   if (!ok) return Response.json({ error: 'Nieprawidłowe hasło.' }, { status: 401 });
 
-  const token = sign({ exp: Date.now() + 8 * 60 * 60 * 1000 });
-  return Response.json({ token });
+  return Response.json({ token: signToken(SECRET) });
 };

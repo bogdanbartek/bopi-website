@@ -1,17 +1,14 @@
 import { getStore } from '@netlify/blobs';
+import { publicPayload } from '../lib/shared.mjs';
 
-// Domyślne ceny pokazywane, dopóki pracownik nie ustawi własnych.
-const DEFAULTS = { pb95: 6.19, on: 6.34, lpg: 2.89, updatedAt: null };
-
-// Publiczny odczyt aktualnych cen paliw.
+// Publiczny odczyt ustawień strony: ceny + trend, godziny, ogłoszenie, produkty.
 export default async () => {
-  let data = DEFAULTS;
+  let stored = null;
   try {
     const store = getStore('bopi');
-    const stored = await store.get('prices', { type: 'json' });
-    if (stored) data = stored;
+    stored = await store.get('site', { type: 'json' });
   } catch (e) {
-    // Brak skonfigurowanego magazynu (np. lokalnie) — zwróć wartości domyślne.
+    // Brak skonfigurowanego magazynu (np. lokalnie) — użyj wartości domyślnych.
   }
-  return Response.json(data, { headers: { 'Cache-Control': 'no-store' } });
+  return Response.json(publicPayload(stored), { headers: { 'Cache-Control': 'no-store' } });
 };

@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /admin.html
+
+# Po podpięciu własnej domeny podmień adres poniżej:
+Sitemap: https://bopi-czermin.netlify.app/sitemap.xml
