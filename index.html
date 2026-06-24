@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BO-PI · Stacja paliw Czemin</title>
+<meta name="description" content="BO-PI — rodzinna stacja paliw w Czeminie. Pełen bak, gorąca kawa i wymiana butli z gazem. Od sąsiadów dla sąsiadów.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:#14110d}
+  ::selection{background:#ffc24b;color:#14110d}
+  @keyframes bopiRise{from{opacity:0;transform:translateY(34px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes bopiGlow{0%,100%{opacity:.55;transform:scale(1)}50%{opacity:.85;transform:scale(1.06)}}
+  @keyframes bopiFloat{0%{transform:translateY(0) translateX(0);opacity:0}10%{opacity:.7}90%{opacity:.5}100%{transform:translateY(-260px) translateX(22px);opacity:0}}
+  @keyframes bopiRoad{from{background-position-y:0}to{background-position-y:120px}}
+  @keyframes bopiPulse{0%,100%{box-shadow:0 0 0 0 rgba(255,194,75,.45)}50%{box-shadow:0 0 0 10px rgba(255,194,75,0)}}
+  @keyframes bopiFlick{0%,100%{opacity:1}97%{opacity:1}98%{opacity:.4}99%{opacity:1}}
+  @keyframes bopiScroll{0%{transform:translateY(0);opacity:0}40%{opacity:1}80%{transform:translateY(10px);opacity:0}100%{opacity:0}}
+  .bopi-tilt{transition:transform .35s cubic-bezier(.2,.7,.2,1),border-color .35s,box-shadow .35s}
+  .bopi-tilt:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,.45)}
+  .bopi-tilt.amber:hover{border-color:rgba(255,194,75,.5)}
+  .bopi-tilt.green:hover{border-color:rgba(182,255,91,.5)}
+</style>
+</head>
+<body>
+<div style="background:#14110d;color:#f2ede3;font-family:'DM Sans',system-ui,sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased">
+
+  <nav style="position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:18px clamp(20px,5vw,64px);backdrop-filter:blur(12px);background:linear-gradient(to bottom,rgba(20,17,13,.85),rgba(20,17,13,.35));border-bottom:1px solid rgba(255,255,255,.06)">
+    <a href="#top" style="display:flex;align-items:center;gap:12px;text-decoration:none">
+      <span style="display:grid;place-items:center;width:38px;height:38px;border-radius:11px;background:#ffc24b;color:#14110d;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:18px;box-shadow:0 0 22px rgba(255,194,75,.5)">B</span>
+      <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:20px;letter-spacing:.04em;color:#f2ede3">BO-PI</span>
+    </a>
+    <div style="display:flex;align-items:center;gap:clamp(14px,2.4vw,34px)">
+      <a href="#ceny" style="color:#cdc6ba;text-decoration:none;font-size:15px;font-weight:500">Ceny</a>
+      <a href="#uslugi" style="color:#cdc6ba;text-decoration:none;font-size:15px;font-weight:500">Usługi</a>
+      <a href="#godziny" style="color:#cdc6ba;text-decoration:none;font-size:15px;font-weight:500">Godziny</a>
+      <a href="#kontakt" style="display:inline-flex;align-items:center;gap:8px;padding:9px 18px;border-radius:999px;background:#ffc24b;color:#14110d;text-decoration:none;font-size:15px;font-weight:600;box-shadow:0 0 20px rgba(255,194,75,.35)">Kontakt</a>
+    </div>
+  </nav>
+
+  <section id="top" style="position:relative;min-height:100vh;display:flex;align-items:center;padding:140px clamp(20px,5vw,64px) 90px;overflow:hidden">
+    <div style="position:absolute;inset:0;background:radial-gradient(120% 90% at 80% 10%,rgba(255,194,75,.16),transparent 55%),radial-gradient(90% 70% at 0% 100%,rgba(182,255,91,.08),transparent 60%);z-index:0"></div>
+    <div style="position:absolute;top:8%;right:6%;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(255,194,75,.5),transparent 65%);filter:blur(50px);animation:bopiGlow 7s ease-in-out infinite;z-index:0"></div>
+    <div style="position:absolute;bottom:-40px;left:0;right:0;height:300px;z-index:0;background-image:repeating-linear-gradient(rgba(255,194,75,.0) 0 40px,rgba(255,194,75,.35) 40px 80px);background-size:6px 120px;background-repeat:repeat-y;background-position:center;width:6px;margin:0 auto;animation:bopiRoad .9s linear infinite;opacity:.5;transform:perspective(380px) rotateX(58deg);transform-origin:bottom"></div>
+    <div style="position:absolute;inset:0;z-index:0;pointer-events:none">
+      <span style="position:absolute;left:12%;bottom:18%;width:7px;height:7px;border-radius:50%;background:#ffc24b;box-shadow:0 0 12px #ffc24b;animation:bopiFloat 9s linear infinite"></span>
+      <span style="position:absolute;left:28%;bottom:12%;width:5px;height:5px;border-radius:50%;background:#ffd886;box-shadow:0 0 10px #ffc24b;animation:bopiFloat 11s linear infinite 1.5s"></span>
+      <span style="position:absolute;left:46%;bottom:22%;width:6px;height:6px;border-radius:50%;background:#b6ff5b;box-shadow:0 0 12px #b6ff5b;animation:bopiFloat 10s linear infinite 3s"></span>
+      <span style="position:absolute;left:64%;bottom:14%;width:4px;height:4px;border-radius:50%;background:#ffc24b;box-shadow:0 0 8px #ffc24b;animation:bopiFloat 12s linear infinite 2s"></span>
+      <span style="position:absolute;left:78%;bottom:26%;width:7px;height:7px;border-radius:50%;background:#ffd886;box-shadow:0 0 12px #ffc24b;animation:bopiFloat 8.5s linear infinite 4s"></span>
+      <span style="position:absolute;left:88%;bottom:16%;width:5px;height:5px;border-radius:50%;background:#b6ff5b;box-shadow:0 0 10px #b6ff5b;animation:bopiFloat 13s linear infinite .5s"></span>
+    </div>
+
+    <div style="position:relative;z-index:2;max-width:1100px;margin:0 auto;width:100%">
+      <div style="display:inline-flex;align-items:center;gap:10px;padding:8px 16px;border-radius:999px;border:1px solid rgba(255,194,75,.4);background:rgba(255,194,75,.08);font-size:14px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#ffc24b;animation:bopiRise .7s cubic-bezier(.2,.7,.2,1) both">
+        <span style="width:8px;height:8px;border-radius:50%;background:#b6ff5b;box-shadow:0 0 10px #b6ff5b"></span>
+        Stacja paliw · Czermin
+      </div>
+      <h1 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(64px,14vw,200px);line-height:.92;letter-spacing:-.02em;margin:22px 0 0;color:#f7f3ea;animation:bopiRise .8s cubic-bezier(.2,.7,.2,1) .08s both">
+        BO-PI
+      </h1>
+      <p style="max-width:560px;font-size:clamp(18px,2.4vw,24px);line-height:1.5;color:#c8c0b4;margin:26px 0 0;animation:bopiRise .8s cubic-bezier(.2,.7,.2,1) .18s both">
+        Twoja stacja na rogu. Pełen bak, gorąca kawa i butle z gazem — <strong style="color:#f2ede3;font-weight:600">od sąsiadów dla sąsiadów</strong>.
+      </p>
+      <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:36px;animation:bopiRise .8s cubic-bezier(.2,.7,.2,1) .28s both">
+        <a href="#ceny" style="display:inline-flex;align-items:center;gap:10px;padding:15px 28px;border-radius:999px;background:#ffc24b;color:#14110d;text-decoration:none;font-size:17px;font-weight:700;box-shadow:0 8px 30px rgba(255,194,75,.35);animation:bopiPulse 2.6s ease-out infinite">
+          Sprawdź ceny paliw →
+        </a>
+        <a href="#godziny" style="display:inline-flex;align-items:center;gap:10px;padding:15px 28px;border-radius:999px;background:transparent;border:1px solid rgba(255,255,255,.18);color:#f2ede3;text-decoration:none;font-size:17px;font-weight:600">
+          Jak dojechać
+        </a>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:26px;margin-top:46px;animation:bopiRise .8s cubic-bezier(.2,.7,.2,1) .38s both">
+        <div id="hero-status" style="display:flex;align-items:center;gap:10px;color:#a59d90;font-size:15px"><span id="hero-dot" style="width:9px;height:9px;border-radius:50%;background:#b6ff5b;box-shadow:0 0 10px #b6ff5b"></span><span id="hero-hours-text">Otwarte dziś 6:00 – 20:00</span></div>
+        <div style="color:#a59d90;font-size:15px">📍 Czermin 146, 39-304 Czermin</div>
+        <div style="color:#a59d90;font-size:15px">☎ 65 123 45 67</div>
+      </div>
+    </div>
+
+    <div style="position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;color:#7c7569">
+      <span style="font-size:12px;letter-spacing:.2em;text-transform:uppercase">Przewiń</span>
+      <span style="width:18px;height:28px;border:1.5px solid rgba(255,255,255,.25);border-radius:10px;display:grid;place-items:start center;padding-top:5px"><span style="width:3px;height:7px;border-radius:2px;background:#ffc24b;animation:bopiScroll 1.8s ease-in-out infinite"></span></span>
+    </div>
+  </section>
+
+  <section id="ceny" style="position:relative;padding:clamp(70px,9vw,130px) clamp(20px,5vw,64px);background:#0f0d0a">
+    <div style="max-width:1100px;margin:0 auto">
+      <div data-reveal style="opacity:0;transform:translateY(24px)">
+        <span style="font-size:14px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#ffc24b">Tablica cen</span>
+        <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(34px,5.5vw,62px);line-height:1.02;letter-spacing:-.02em;margin:14px 0 0;color:#f7f3ea">Dzisiejsze ceny paliw</h2>
+        <p id="ceny-updated" style="color:#9b948a;font-size:17px;margin:14px 0 0">Ceny w zł za litr</p>
+      </div>
+
+      <div data-reveal data-count-group style="opacity:0;transform:translateY(24px);margin-top:44px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px">
+        <div style="position:relative;border-radius:20px;padding:30px 28px;background:linear-gradient(165deg,#1c1812,#161310);border:1px solid rgba(255,255,255,.07);overflow:hidden">
+          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:#ffc24b;box-shadow:0 0 14px #ffc24b"></div>
+          <div style="display:flex;align-items:center;justify-content:space-between"><span style="font-size:15px;font-weight:600;color:#c8c0b4">Pb 95</span><span style="font-size:12px;color:#7c7569">benzyna</span></div>
+          <div style="margin-top:18px;font-family:'Space Mono',monospace;font-weight:700;font-size:clamp(40px,6vw,56px);line-height:1;color:#ffc24b;text-shadow:0 0 26px rgba(255,194,75,.45);animation:bopiFlick 6s linear infinite"><span id="p-pb95" data-count="6.19">0,00</span> <span style="font-size:18px;color:#9b948a">zł</span></div>
+        </div>
+        <div style="position:relative;border-radius:20px;padding:30px 28px;background:linear-gradient(165deg,#1c1812,#161310);border:1px solid rgba(255,255,255,.07);overflow:hidden">
+          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:#ffc24b;box-shadow:0 0 14px #ffc24b"></div>
+          <div style="display:flex;align-items:center;justify-content:space-between"><span style="font-size:15px;font-weight:600;color:#c8c0b4">ON Diesel</span><span style="font-size:12px;color:#7c7569">olej napęd.</span></div>
+          <div style="margin-top:18px;font-family:'Space Mono',monospace;font-weight:700;font-size:clamp(40px,6vw,56px);line-height:1;color:#ffc24b;text-shadow:0 0 26px rgba(255,194,75,.45);animation:bopiFlick 6s linear infinite .8s"><span id="p-on" data-count="6.34">0,00</span> <span style="font-size:18px;color:#9b948a">zł</span></div>
+        </div>
+        <div style="position:relative;border-radius:20px;padding:30px 28px;background:linear-gradient(165deg,#1c1812,#161310);border:1px solid rgba(182,255,91,.18);overflow:hidden">
+          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:#b6ff5b;box-shadow:0 0 14px #b6ff5b"></div>
+          <div style="display:flex;align-items:center;justify-content:space-between"><span style="font-size:15px;font-weight:600;color:#c8c0b4">LPG</span><span style="font-size:12px;color:#7c7569">autogaz</span></div>
+          <div style="margin-top:18px;font-family:'Space Mono',monospace;font-weight:700;font-size:clamp(40px,6vw,56px);line-height:1;color:#b6ff5b;text-shadow:0 0 26px rgba(182,255,91,.4);animation:bopiFlick 6s linear infinite 1.4s"><span id="p-lpg" data-count="2.89">0,00</span> <span style="font-size:18px;color:#9b948a">zł</span></div>
+        </div>
+      </div>
+      <p data-reveal style="opacity:0;transform:translateY(24px);margin-top:22px;font-size:14px;color:#7c7569">Ceny orientacyjne. Aktualne stawki zawsze na pylonie przy wjeździe.</p>
+    </div>
+  </section>
+
+  <section id="uslugi" style="position:relative;padding:clamp(70px,9vw,130px) clamp(20px,5vw,64px);background:#14110d">
+    <div style="max-width:1100px;margin:0 auto">
+      <div data-reveal style="opacity:0;transform:translateY(24px);max-width:640px">
+        <span style="font-size:14px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#ffc24b">U nas</span>
+        <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(34px,5.5vw,62px);line-height:1.02;letter-spacing:-.02em;margin:14px 0 0;color:#f7f3ea">Coś więcej niż tankowanie</h2>
+      </div>
+
+      <div style="margin-top:44px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px">
+        <div data-reveal data-tilt class="bopi-tilt amber" style="opacity:0;transform:translateY(24px);position:relative;border-radius:24px;padding:34px;background:linear-gradient(165deg,#1d1812,#161310);border:1px solid rgba(255,255,255,.07);overflow:hidden">
+          <div style="position:absolute;right:-30px;top:-30px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(255,194,75,.22),transparent 70%);filter:blur(8px)"></div>
+          <div style="position:relative;width:56px;height:56px;border-radius:16px;display:grid;place-items:center;background:rgba(255,194,75,.12);border:1px solid rgba(255,194,75,.3);font-size:28px">☕</div>
+          <h3 style="position:relative;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:26px;margin:22px 0 0;color:#f7f3ea">Świeża kawa</h3>
+          <p style="position:relative;color:#a59d90;font-size:16px;line-height:1.55;margin:12px 0 0">Świeżo mielona, z naszego ekspresu. Mała czarna na drogę albo duże latte do śniadania — zawsze gorąca i bez kolejki.</p>
+        </div>
+
+        <div data-reveal data-tilt class="bopi-tilt green" style="opacity:0;transform:translateY(24px);position:relative;border-radius:24px;padding:34px;background:linear-gradient(165deg,#1a1d12,#141610);border:1px solid rgba(182,255,91,.14);overflow:hidden">
+          <div style="position:absolute;right:-30px;top:-30px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(182,255,91,.18),transparent 70%);filter:blur(8px)"></div>
+          <div style="position:relative;width:56px;height:56px;border-radius:16px;display:grid;place-items:center;background:rgba(182,255,91,.12);border:1px solid rgba(182,255,91,.3);font-size:28px">🔥</div>
+          <h3 style="position:relative;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:26px;margin:22px 0 0;color:#f7f3ea">Wymiana butli LPG</h3>
+          <p style="position:relative;color:#a59d90;font-size:16px;line-height:1.55;margin:12px 0 0">Butle gazowe 11 kg na grilla, do kuchenki i ogrzewania. Wymieniamy od ręki — przyjeżdżasz z pustą, wyjeżdżasz z pełną.</p>
+        </div>
+
+        <div data-reveal data-tilt class="bopi-tilt amber" style="opacity:0;transform:translateY(24px);position:relative;border-radius:24px;padding:34px;background:linear-gradient(165deg,#1d1812,#161310);border:1px solid rgba(255,255,255,.07);overflow:hidden">
+          <div style="position:absolute;right:-30px;top:-30px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(255,194,75,.22),transparent 70%);filter:blur(8px)"></div>
+          <div style="position:relative;width:56px;height:56px;border-radius:16px;display:grid;place-items:center;background:rgba(255,194,75,.12);border:1px solid rgba(255,194,75,.3);font-size:28px">🛒</div>
+          <h3 style="position:relative;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:26px;margin:22px 0 0;color:#f7f3ea">Sklep na drogę</h3>
+          <p style="position:relative;color:#a59d90;font-size:16px;line-height:1.55;margin:12px 0 0">Zimne napoje, przekąski, płyny do spryskiwaczy i drobiazgi, których zapomniałeś. Wszystko pod ręką, gdy się spieszysz.</p>
+        </div>
+      </div>
+
+      <div data-reveal style="opacity:0;transform:translateY(24px);margin-top:20px;display:flex;flex-wrap:wrap;gap:12px">
+        <span style="display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:999px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);font-size:15px;color:#c8c0b4">💳 Karta i BLIK</span>
+        <span style="display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:999px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);font-size:15px;color:#c8c0b4">🧼 Ręczniki i woda do szyb</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="godziny" style="position:relative;padding:clamp(70px,9vw,130px) clamp(20px,5vw,64px);background:#0f0d0a">
+    <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;align-items:start">
+      <div data-reveal style="opacity:0;transform:translateY(24px)">
+        <span style="font-size:14px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#ffc24b">Godziny otwarcia</span>
+        <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(32px,4.6vw,52px);line-height:1.04;letter-spacing:-.02em;margin:14px 0 26px;color:#f7f3ea">Zapraszamy codziennie</h2>
+        <div style="border-radius:20px;border:1px solid rgba(255,255,255,.07);overflow:hidden">
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 22px;background:rgba(255,194,75,.08);border-bottom:1px solid rgba(255,255,255,.05)"><span style="font-weight:600;color:#f2ede3">Poniedziałek – Piątek</span><span style="font-family:'Space Mono',monospace;color:#ffc24b">6:00 – 20:00</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 22px;border-bottom:1px solid rgba(255,255,255,.05)"><span style="font-weight:600;color:#f2ede3">Sobota</span><span style="font-family:'Space Mono',monospace;color:#c8c0b4">7:00 – 19:00</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 22px"><span style="font-weight:600;color:#f2ede3">Niedziela</span><span style="font-family:'Space Mono',monospace;color:#c8c0b4">9:00 – 17:00</span></div>
+        </div>
+        <div id="now-badge" style="margin-top:16px;display:inline-flex;align-items:center;gap:10px;padding:11px 18px;border-radius:999px;background:rgba(182,255,91,.1);border:1px solid rgba(182,255,91,.3);font-size:15px;color:#b6ff5b"><span id="now-dot" style="width:9px;height:9px;border-radius:50%;background:#b6ff5b;box-shadow:0 0 10px #b6ff5b;animation:bopiGlow 2s ease-in-out infinite"></span><span id="now-text">Teraz otwarte</span></div>
+      </div>
+
+      <div id="kontakt" data-reveal style="opacity:0;transform:translateY(24px)">
+        <span style="font-size:14px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#ffc24b">Kontakt i dojazd</span>
+        <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(32px,4.6vw,52px);line-height:1.04;letter-spacing:-.02em;margin:14px 0 26px;color:#f7f3ea">Jak nas znaleźć</h2>
+
+        <div style="position:relative;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,.07);height:240px;background:#12100c">
+          <iframe title="Mapa dojazdu — Stacja Paliw BO-PI, Czermin 146" src="https://maps.google.com/maps?q=Czermin%20146%2C%2039-304%20Czermin&z=15&hl=pl&output=embed" width="100%" height="100%" style="border:0;display:block;filter:grayscale(.3) contrast(1.05)" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+          <div style="position:absolute;left:16px;bottom:14px;padding:8px 14px;border-radius:10px;background:rgba(15,13,10,.85);backdrop-filter:blur(6px);color:#f2ede3;font-size:14px;font-weight:600;pointer-events:none">📍 Czermin 146, 39-304 Czermin</div>
+        </div>
+        <a href="https://maps.google.com/?q=Stacja+Paliw+BO-PI,+Czermin+146,+39-304+Czermin" target="_blank" rel="noopener" style="margin-top:12px;display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:999px;background:#ffc24b;color:#14110d;text-decoration:none;font-size:15px;font-weight:700">Wyznacz trasę w Google Maps →</a>
+
+        <div style="margin-top:18px;display:grid;gap:12px">
+          <a href="tel:651234567" style="display:flex;align-items:center;gap:14px;padding:16px 20px;border-radius:16px;border:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.03);text-decoration:none"><span style="font-size:22px">☎</span><span><span style="display:block;font-size:13px;color:#7c7569">Zadzwoń do nas</span><span style="display:block;font-size:18px;font-weight:600;color:#f2ede3;font-family:'Space Mono',monospace">65 123 45 67</span></span></a>
+          <a href="mailto:kontakt@bopi-czemin.pl" style="display:flex;align-items:center;gap:14px;padding:16px 20px;border-radius:16px;border:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.03);text-decoration:none"><span style="font-size:22px">✉</span><span><span style="display:block;font-size:13px;color:#7c7569">Napisz</span><span style="display:block;font-size:18px;font-weight:600;color:#f2ede3">kontakt@bopi-czemin.pl</span></span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer style="background:#14110d;border-top:1px solid rgba(255,255,255,.06);padding:48px clamp(20px,5vw,64px)">
+    <div style="max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between">
+      <div style="display:flex;align-items:center;gap:12px">
+        <span style="display:grid;place-items:center;width:36px;height:36px;border-radius:10px;background:#ffc24b;color:#14110d;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:17px">B</span>
+        <div><span style="display:block;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:18px;color:#f2ede3;letter-spacing:.04em">BO-PI</span><span style="display:block;font-size:13px;color:#7c7569">Stacja paliw · Czermin</span></div>
+      </div>
+      <p style="font-size:14px;color:#7c7569;max-width:380px">Rodzinna stacja w sercu Czermina. Tankuj u sąsiada — szybko, uczciwie, z uśmiechem.</p>
+      <span style="font-size:13px;color:#5f594f">© 2026 BO-PI Czermin</span>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+(function () {
+  const fmt = (v) => v.toFixed(2).replace('.', ',');
+  const ease = (t) => 1 - Math.pow(1 - t, 3);
+
+  // ----- Live fuel prices (from Netlify function; falls back to page defaults) -----
+  const setPrice = (id, val) => {
+    if (typeof val !== 'number' || !isFinite(val)) return;
+    const node = document.getElementById(id);
+    if (!node) return;
+    node.dataset.count = String(val);
+    if (node.dataset.done) node.textContent = fmt(val); // already animated → patch directly
+  };
+  const loadPrices = async () => {
+    try {
+      const r = await fetch('/.netlify/functions/prices', { cache: 'no-store' });
+      if (!r.ok) return;
+      const d = await r.json();
+      setPrice('p-pb95', d.pb95);
+      setPrice('p-on', d.on);
+      setPrice('p-lpg', d.lpg);
+      const upd = document.getElementById('ceny-updated');
+      if (upd && d.updatedAt) {
+        const dt = new Date(d.updatedAt).toLocaleDateString('pl-PL', { day: 'numeric', month: 'long', year: 'numeric' });
+        upd.textContent = 'Aktualizacja: ' + dt + ' · ceny w zł za litr';
+      }
+    } catch (e) { /* offline or opened as a local file — keep default prices */ }
+  };
+  loadPrices();
+
+  // ----- Open / closed status from the opening hours -----
+  const HOURS = { 0: ['09:00', '17:00'], 1: ['06:00', '20:00'], 2: ['06:00', '20:00'], 3: ['06:00', '20:00'], 4: ['06:00', '20:00'], 5: ['06:00', '20:00'], 6: ['07:00', '19:00'] };
+  const toMin = (s) => { const [h, m] = s.split(':').map(Number); return h * 60 + m; };
+  const updateStatus = () => {
+    const now = new Date();
+    const [o, c] = HOURS[now.getDay()];
+    const cur = now.getHours() * 60 + now.getMinutes();
+    const open = cur >= toMin(o) && cur < toMin(c);
+    const heroText = document.getElementById('hero-hours-text');
+    const heroDot = document.getElementById('hero-dot');
+    if (heroText) heroText.textContent = (open ? 'Otwarte teraz · ' : 'Zamknięte · dziś ') + o + ' – ' + c;
+    const nowText = document.getElementById('now-text');
+    const nowDot = document.getElementById('now-dot');
+    const nowBadge = document.getElementById('now-badge');
+    if (nowText) nowText.textContent = open ? 'Teraz otwarte' : 'Teraz zamknięte';
+    [heroDot, nowDot].forEach((dot) => {
+      if (!dot) return;
+      dot.style.background = open ? '#b6ff5b' : '#ff6b5b';
+      dot.style.boxShadow = '0 0 10px ' + (open ? '#b6ff5b' : 'rgba(255,107,91,.7)');
+    });
+    if (nowBadge) {
+      nowBadge.style.background = open ? 'rgba(182,255,91,.1)' : 'rgba(255,107,91,.1)';
+      nowBadge.style.borderColor = open ? 'rgba(182,255,91,.3)' : 'rgba(255,107,91,.3)';
+      nowBadge.style.color = open ? '#b6ff5b' : '#ff6b5b';
+    }
+  };
+  updateStatus();
+  setInterval(updateStatus, 60000);
+
+  // Animated count-up for fuel prices
+  const animateCounts = (scope) => {
+    scope.querySelectorAll('[data-count]').forEach((node) => {
+      if (node.dataset.done) return;
+      node.dataset.done = '1';
+      const target = parseFloat(node.dataset.count);
+      const dur = 1200;
+      const start = performance.now();
+      const step = (now) => {
+        const p = Math.min(1, (now - start) / dur);
+        node.textContent = fmt(target * ease(p));
+        if (p < 1) requestAnimationFrame(step);
+        else node.textContent = fmt(target);
+      };
+      requestAnimationFrame(step);
+    });
+  };
+
+  // Scroll reveal + trigger counters
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (!e.isIntersecting) return;
+      const el = e.target;
+      el.style.transition = 'opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1)';
+      el.style.opacity = '1';
+      el.style.transform = 'translateY(0)';
+      if (el.hasAttribute('data-count-group')) animateCounts(el);
+      io.unobserve(el);
+    });
+  }, { threshold: 0.18 });
+
+  document.querySelectorAll('[data-reveal]').forEach((el, i) => {
+    el.style.transitionDelay = (Math.min(i, 4) * 60) + 'ms';
+    io.observe(el);
+  });
+})();
+</script>
+</body>
+</html>
