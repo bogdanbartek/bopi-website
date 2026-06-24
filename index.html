@@ -361,11 +361,11 @@
     scope.querySelectorAll('[data-count]').forEach((node) => {
       if (node.dataset.done) return;
       node.dataset.done = '1';
-      const target = parseFloat(node.dataset.count);
       const dur = 1200;
       const start = performance.now();
       const step = (now) => {
-        const p = Math.min(1, (now - start) / dur);
+        const target = parseFloat(node.dataset.count); // read latest each frame, so a
+        const p = Math.min(1, (now - start) / dur);    // mid-flight price update is honored
         node.textContent = fmt(target * ease(p));
         if (p < 1) requestAnimationFrame(step);
         else node.textContent = fmt(target);
